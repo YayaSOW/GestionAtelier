@@ -32,4 +32,20 @@ function saveCategorie(array $categorie) {
     }
 }
 
+function deleteCategorie(int $id)
+{
+    //Connecter a la BD
+    $dsn = "mysql:host=localhost:3306;dbname=projet_php_gesatelier";
+    $username = "root";
+    $password = "";
+    try {
+        $dbn = new PDO($dsn, $username, $password);
+        $sql = "DELETE FROM categorie WHERE `categorie`.`id` = :id";
+        $stm = $dbn->prepare($sql);
+        $stm->bindParam(':id', $id);
+        $stm->execute();
+    } catch (PDOException $e) {
+        echo "Erreur de Connexion: " . $e->getMessage();
+    }
+}
 ?>

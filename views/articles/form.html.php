@@ -49,6 +49,7 @@
                 </div>
                 <div class="flex justify-end">
                     <input type="text" class="hidden" name="action" value="save-article">
+                    <input type="text" class="hidden" name="controller" value="article">
                     <button type="submit" name="btnSave"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                 </div>

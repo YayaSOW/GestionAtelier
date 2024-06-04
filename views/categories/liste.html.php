@@ -40,13 +40,20 @@
                                         <center><?= $categorie["nomCategorie"] ?></center>
                                     </td>
                                     <td class="py-2 px-4">
-                                        <button
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
-                                            <i class="fa-solid fa-pen-to-square"></i> Edit
-                                        </button>
-                                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
-                                            <i class="fa-solid fa-trash"></i> Delete
-                                        </button>
+                                        <form action="<?= WEBROOT ?>" method="post" style="display:inline;">
+                                            <input type="text" class="hidden" name="action" value="modifier-categorie">
+                                            <button type="submit" name="id" value="<?= $categorie["id"]?>"
+                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                                                <i class="fa-solid fa-pen-to-square"></i> Edit
+                                            </button>
+                                        </form>
+                                        <form action="<?= WEBROOT ?>" method="post" style="display:inline;">
+                                            <input type="text" class="hidden" name="action" value="supprimer-categorie">
+                                            <button type="submit" name="id" value="<?= $categorie["id"]?>"
+                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+                                                <i class="fa-solid fa-trash"></i> Delete
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

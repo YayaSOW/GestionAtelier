@@ -1,26 +1,34 @@
 <?php
-require_once("../model/type.model.php");
+require_once ("../model/type.model.php");
 
 if (isset($_REQUEST["action"])) {
-    if($_REQUEST["action"]=="liste-type"){
+    if ($_REQUEST["action"] == "liste-type") {
         listerType();
-    }elseif ($_REQUEST["action"]=="save-type") {
+    } elseif ($_REQUEST["action"] == "save-type") {
         unset($_REQUEST["action"]);
         unset($_REQUEST["controller"]);
         // var_dump($_REQUEST);
         storeType($_REQUEST);
-        header("location:".WEBROOT."?controller=type&action=liste-type");
-        exit;
+    }elseif ($_REQUEST["action"] == "supprimer-type") {
+        var_dump($_REQUEST);
+        // supprimer(intval($_REQUEST["id"]));
     }
-}else {
-    
+} else {
+
 }
 
-function listerType() {
+function listerType()
+{
+    ob_start();
     $types = findAllType();
-    require_once("../views/types/liste.html.php");
+    require_once ("../views/types/liste.html.php");
+    $contentView=ob_get_clean();
+    require_once ("../views/layout/base.layout.php");
 }
-function storeType(array $types) {
+function storeType(array $types)
+{
     saveType($types);
+    header("location:" . WEBROOT . "?controller=type&action=liste-type");
+    exit;
 }
 ?>

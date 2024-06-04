@@ -31,23 +31,31 @@
                         <tbody>
                             <?php
                             foreach ($types as $type):
-                            ?>
-                            <tr class="border-b">
-                                <td class="py-2 px-4">
-                                    <center><?= $type["id"] ?></center>
-                                </td>
-                                <td class="py-2 px-4">
-                                    <center><?= $type["nomType"] ?></center>
-                                </td>
-                                <td class="py-2 px-4">
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
-                                        <i class="fa-solid fa-pen-to-square"></i> Edit
-                                    </button>
-                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
-                                        <i class="fa-solid fa-trash"></i> Delete
-                                    </button>
-                                </td>
-                            </tr>
+                                ?>
+                                <tr class="border-b">
+                                    <td class="py-2 px-4">
+                                        <center><?= $type["id"] ?></center>
+                                    </td>
+                                    <td class="py-2 px-4">
+                                        <center><?= $type["nomType"] ?></center>
+                                    </td>
+                                    <td class="py-2 px-4">
+                                        <form action="<?= WEBROOT ?>" method="post" style="display:inline;">
+                                            <input type="text" class="hidden" name="action" value="modifier-type">
+                                            <button type="submit" name="id" value="<?=$type["id"]?>"
+                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                                                <i class="fa-solid fa-pen-to-square"></i> Edit
+                                            </button>
+                                        </form>
+                                        <form action="<?= WEBROOT ?>" method="post" style="display:inline;">
+                                            <input type="text" class="hidden" name="action" value="supprimer-type">
+                                            <button type="submit" name="id" value="<?=$type["id"]?>"
+                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+                                                <i class="fa-solid fa-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
                             <?php endforeach ?>
                         </tbody>
                     </table>

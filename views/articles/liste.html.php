@@ -40,22 +40,24 @@
                             <td class="py-2 px-4">
                                 <center><?= $article["nomType"] ?></center>
                             </td>
-                            <td class="py-2 px-4">
-                                <form action="<?= WEBROOT ?>" method="post" style="display:inline;">
-                                    <input type="text" class="hidden" name="action" value="modifier-article">
-                                    <button name="id" value="<?= $article["id_article"] ?>"
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
-                                        <i class="fa-solid fa-pen-to-square"></i> Edit
-                                    </button>
-                                </form>
-                                <form action="<?= WEBROOT ?>" method="post" style="display:inline;" >
-                                    <input type="text" class="hidden" name="action" value="supprimer-article">
-                                    <button name="id" value="<?= $article["id_article"] ?>"
-                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
-                                        <i class="fa-solid fa-trash"></i> Delete
-                                    </button>
-                                </form>
-                            </td>
+                            <form action="<?= WEBROOT ?>" method="post">
+                                <td class="py-2 px-4">
+                                    <form style="display:inline;">
+                                        <input type="text" class="hidden" name="action" value="modifier-article">
+                                        <button name="id" value="<?= $article["id_article"] ?>"
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                                            <i class="fa-solid fa-pen-to-square"></i> Edit
+                                        </button>
+                                    </form>
+                                    <form style="display:inline;">
+                                        <input type="text" class="hidden" name="action" value="supprimer-article">
+                                        <button name="id" value="<?= $article["id_article"] ?>"
+                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+                                            <i class="fa-solid fa-trash"></i> Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </form>
                         </tr>
                     <?php endforeach ?>
                 </tbody>
