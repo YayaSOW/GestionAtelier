@@ -14,7 +14,6 @@ if (isset($_REQUEST["action"])) {
         unset($_REQUEST["action"]);
         unset($_REQUEST["btnSave"]);
         store($_REQUEST);
-
     } elseif ($_REQUEST["action"] == "modifier-article") {
         ob_start();
         // var_dump($_REQUEST);
