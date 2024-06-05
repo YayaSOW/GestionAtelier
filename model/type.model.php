@@ -6,21 +6,13 @@ class TypeModel extends Model
     public function __construct()
     {
         $this->ouvrirConnection();
-    }
-    public function findAll(): array
-    {
-        return $this->executeSelect("SELECT * FROM type");
+        $this->table = "type";
     }
 
     public function save(array $types): int
     {
-        try {
-            extract($types);
-            $sql = "INSERT INTO `type` (`nomType`) VALUES ('$nomType')";
-            return $this->pdo->exec($sql);
-        } catch (PDOException $e) {
-            echo "Erreur de Connexion: " . $e->getMessage();
-        }
+        extract($types);
+        return $this->executeUpdate("INSERT INTO `type` (`nomType`) VALUES ('$nomType')");
     }
 
     public function delete(int $id)

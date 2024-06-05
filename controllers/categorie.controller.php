@@ -18,11 +18,9 @@ class CategorieController extends Controller
             } elseif ($_REQUEST["action"] == "save-categorie") {
                 unset($_REQUEST["action"]);
                 unset($_REQUEST["controller"]);
-                // var_dump($_REQUEST);
                 $this->store($_REQUEST);
             } elseif ($_REQUEST["action"] == "supprimer-categorie") {
                 var_dump($_REQUEST["id"]);
-                // echo "cool";
             } elseif ($_REQUEST["action"] == "modifier-categorie") {
                 var_dump($_REQUEST);
             }
@@ -33,11 +31,6 @@ class CategorieController extends Controller
 
     private function listerCategorie(): void
     {
-        // ob_start();
-        // $categories = $this->categorieModel->findAll();
-        // require_once "../views/categories/liste.html.php";
-        // $contentView = ob_get_clean();
-        // require_once "../views/layout/base.layout.php";
         $this->renderView("categories/liste", ["categories" => $this->categorieModel->findAll()]);
     }
     private function store(array $categorie): void

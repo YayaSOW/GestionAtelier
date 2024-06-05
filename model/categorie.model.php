@@ -5,21 +5,13 @@ class CategorieModel extends Model
     public function __construct()
     {
         $this->ouvrirConnection();
-    }
-    public function findAll(): array
-    {
-        return $this->executeSelect("SELECT * FROM categorie");
+        $this->table = "categorie";
     }
 
-    public function save(array $categorie):int
+    public function save(array $categorie): int
     {
-        try {
-            extract($categorie);
-            $sql = "INSERT INTO `categorie` (`nomCategorie`) VALUES ('$nomCategorie')";
-            return $this->pdo->exec($sql);
-        } catch (PDOException $e) {
-            echo "Erreur de Connexion: " . $e->getMessage();
-        }
+        extract($categorie);
+        return $this->executeUpdate("INSERT INTO `categorie` (`nomCategorie`) VALUES ('$nomCategorie')");
     }
 
     public function delete(int $id)

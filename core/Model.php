@@ -5,6 +5,7 @@ class Model
     protected $dsn = "mysql:host=localhost:3306;dbname=projet_php_gesatelier";
     protected $username = "root";
     protected $password = "";
+    protected string $table;
     public function ouvrirConnection():void
     {
         //Connecter a la BD
@@ -28,6 +29,7 @@ class Model
         }
     }
 
+    // select , find
     protected function executeSelect(string $sql, bool $fetch=false ):array{
         try {
             $stm = $this->pdo->query($sql);
@@ -35,6 +37,21 @@ class Model
         } catch (PDOException $e) {
             echo "Erreur de Connexion: " . $e->getMessage();
         }
+    }
+
+    // insert(save),update,delete
+    public function executeUpdate(string $sql):int
+    {
+        try {
+            return $this->pdo->exec($sql);
+        } catch (PDOException $e) {
+            echo "Erreur de Connexion: " . $e->getMessage();
+        }
+    }
+
+    public function findAll(): array
+    {
+        return $this->executeSelect("SELECT * FROM $this->table");
     }
 }
 

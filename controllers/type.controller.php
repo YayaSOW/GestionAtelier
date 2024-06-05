@@ -33,11 +33,6 @@ class TypeController extends Controller
 
     private function listerType(): void
     {
-        // ob_start();
-        // $types = $this->typeModel->findAll();
-        // require_once "../views/types/liste.html.php";
-        // $contentView = ob_get_clean();
-        // require_once "../views/layout/base.layout.php";
         $this->renderView("types/liste", ["types" => $this->typeModel->findAll()]);
     }
     private function store(array $types): void

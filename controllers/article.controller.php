@@ -49,30 +49,17 @@ class ArticleController extends Controller
             $this->listerArticle();
         }
         ob_end_flush();
-
     }
 
     private function listerArticle(): void
     {
-        // ob_start();
-        // $articles = $this->articleModel->findAll();
-        // extract($articles);
-        // require_once "../views/articles/liste.html.php";
-        // $contentView = ob_get_clean();
-        // require_once "../views/layout/base.layout.php";
         $this->renderView("articles/liste", ["articles" => $this->articleModel->findAll()]);
     }
 
     private function chargerFormulaire(): void
     {
-        // ob_start();
-        // $types = $this->typeModel->findAll();
-        // $categories = $this->categorieModel->findAll();
-        // require_once "../views/articles/form.html.php";
-        // $contentView = ob_get_clean();
-        // require_once "../views/layout/base.layout.php";
         $this->renderView("articles/form", [
-            "types" => $this->articleModel->findAll(),
+            "types" => $this->typeModel->findAll(),
             "categories" => $this->categorieModel->findAll(),
         ]);
 
