@@ -31,18 +31,33 @@ class CategorieController extends Controller
 
     private function listerCategorie(): void
     {
-        $this->renderView("categories/liste", ["categories" => $this->categorieModel->findAll()]);
+        parent::renderView("categories/liste", ["categories" => $this->categorieModel->findAll()]);
     }
-    private function store(array $categorie): void
+    private function store(array $categories): void
     {
-        $this->categorieModel->save($categorie);
-        $this->redirectToRoute("controller=categorie&action=liste-categorie");
+        // Validation
+        // 1-Obligatoire
+
+        Validator::isEmpty($categories["nomCategorie"], "nomCategorie", "Le Nom du Categorie est Obligatoire");
+        if (Validator::isValid()) {
+            // 1-unicite
+            $categorie = $this->categorieModel->findByName("nomCategorie", $categories["nomCategorie"]);
+            if ($categorie) {
+                Validator::add("nomCategorie", "Cette Categorie existe deja");
+                Session::add("errors", Validator::$errors);
+            } else {
+                $this->categorieModel->save($categories);
+            }
+        } else {
+            Session::add("errors", Validator::$errors);
+        }
+        parent::redirectToRoute("controller=categorie&action=liste-categorie");
     }
 
     private function supprimer(int $id)
     {
         $this->categorieModel->delete($id);
-        $this->redirectToRoute("controller=categorie&action=liste-categorie");
+        parent::redirectToRoute("controller=categorie&action=liste-categorie");
     }
 }
 ?>

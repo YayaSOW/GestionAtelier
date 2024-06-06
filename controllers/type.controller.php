@@ -33,12 +33,27 @@ class TypeController extends Controller
 
     private function listerType(): void
     {
-        $this->renderView("types/liste", ["types" => $this->typeModel->findAll()]);
+        parent::renderView("types/liste", ["types" => $this->typeModel->findAll()]);
     }
     private function store(array $types): void
     {
-        $this->typeModel->save($types);
-        $this->redirectToRoute("controller=type&action=liste-type");
+        // Validation
+        // 1-Obligatoire
+        Validator::isEmpty($types["nomType"], "nomType", "Le Nom de Type est Obligatoire");
+        if (Validator::isValid()) {
+            // 1-unicite
+            $type = $this->typeModel->findByName("nomType", $types["nomType"]);
+            if ($type) {
+                Validator::add("nomType", "Type existe deja");
+                Session::add("errors", Validator::$errors);
+            } else {
+                $this->typeModel->save($types);
+            }
+        } else {
+            Session::add("errors", Validator::$errors);
+        }
+
+        parent::redirectToRoute("controller=type&action=liste-type");
     }
 }
 ?>

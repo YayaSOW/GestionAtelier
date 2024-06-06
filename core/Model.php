@@ -30,7 +30,7 @@ class Model
     }
 
     // select , find
-    protected function executeSelect(string $sql, bool $fetch=false ):array{
+    protected function executeSelect(string $sql, bool $fetch=false ):array|false{
         try {
             $stm = $this->pdo->query($sql);
             return $fetch? $stm->fetch(PDO::FETCH_ASSOC): $stm->fetchAll(PDO::FETCH_ASSOC)  ;
@@ -52,6 +52,11 @@ class Model
     public function findAll(): array
     {
         return $this->executeSelect("SELECT * FROM $this->table");
+    }
+
+    public function findByName(string $nameColonne,string $value): array|false
+    {
+        return $this->executeSelect("SELECT * FROM $this->table where $nameColonne like '$value'", true);
     }
 }
 

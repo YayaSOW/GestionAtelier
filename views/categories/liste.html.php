@@ -1,3 +1,9 @@
+<?php
+$errors=[];
+if (Session::get("errors")) {
+    $errors=Session::get("errors");
+}
+?>
 <div class="w-screen flex flex-col">
     <div class="w-full mb-5">
         <div class="w-full mx-auto bg-white shadow-md rounded-md mt-5">
@@ -5,10 +11,13 @@
             <div class="p-4">
                 <form action="<?= WEBROOT ?>" method="post">
                     <div class="mb-4">
-                        <label for="NomCategorie" class="block text-sm font-bold mb-2">Nom Categorie</label>
+                        <label for="validationServerNomCategorie" class="block text-sm font-bold mb-2">Nom Categorie:</label>
                         <input name="nomCategorie" type="text"
-                            class="block w-full p-2 pl-10 text-sm text-gray-700 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out"
-                            id="nomCategorie" aria-describedby="emailHelp" required>
+                        class="block mt-1 w-full p-2 pl-10 text-sm text-gray-700 placeholder-gray-400 border <?=add_class_invalid("nomCategorie","border-red-600","border-gray-300")?> rounded-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out"
+                        id="validationServerNomCategorie" aria-describedby="validationServerNomCategorieFeedback">
+                            <div id="validationServerNomCategorieFeedback" class="text-sm text-red-600 mt-1 <?=add_class_invalid("nomCategorie")?>">
+                            <?= $errors["nomCategorie"]??""?>
+                        </div>
                     </div>
                     <div class="flex justify-end mb-4">
                         <input type="text" class="hidden" name="action" value="save-categorie">

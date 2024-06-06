@@ -53,12 +53,12 @@ class ArticleController extends Controller
 
     private function listerArticle(): void
     {
-        $this->renderView("articles/liste", ["articles" => $this->articleModel->findAll()]);
+        parent::renderView("articles/liste", ["articles" => $this->articleModel->findAll()]);
     }
 
     private function chargerFormulaire(): void
     {
-        $this->renderView("articles/form", [
+        parent::renderView("articles/form", [
             "types" => $this->typeModel->findAll(),
             "categories" => $this->categorieModel->findAll(),
         ]);
@@ -68,18 +68,18 @@ class ArticleController extends Controller
     private function store(array $articles): void
     {
         $this->articleModel->save($articles);
-        $this->redirectToRoute("controller=article&action=liste-article");
+        parent::redirectToRoute("controller=article&action=liste-article");
     }
     private function change(int $id, array $articles)
     {
         $this->articleModel->update($id, $articles);
-        $this->redirectToRoute("controller=article&action=liste-article");
+        parent::redirectToRoute("controller=article&action=liste-article");
     }
 
     private function supprimer(int $id)
     {
         $this->articleModel->delete($id);
-        $this->redirectToRoute("controller=article&action=liste-article");
+        parent::redirectToRoute("controller=article&action=liste-article");
     }
 }
 ?>

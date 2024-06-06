@@ -1,5 +1,4 @@
 <?php
-define("WEBROOT", "http://localhost:8000");
-require_once ("../core/Router.php");
+require_once "../core/bootstrap.php";
 Router::run();
 ?>

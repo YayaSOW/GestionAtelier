@@ -4,6 +4,7 @@ class Controller
     // protected string $layout="base";
     protected string $layout;
     public function __construct(){
+        Session::ouvrir();
         $this->layout = "base";
     }
     public function redirectToRoute(string $path)
