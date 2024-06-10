@@ -33,10 +33,9 @@
         <ul class="">
             <li class="py-2 px-4 hover:bg-gray-200">
                 <a href="<?= WEBROOT ?>/?controller=article&action=liste-article"
-                    class="flex items-center text-gray-600">
+                    class="flex items-center text-gray-600 ">
                     <i class="fa-solid fa-list mr-2"></i>
                     <span>Lister Article</span>
-                    <!-- <input type="text" class="hidden" name="action" value="liste-article"> -->
                 </a>
             </li>
             <li class="py-2 px-4 hover:bg-gray-200">
@@ -71,8 +70,8 @@
                 </a>
             </li>
         </ul>
-        <div class="px-4 py-2 mt-auto mb-5">
-            <a href="#" class="flex items-center text-gray-600">
+        <div class="px-4 py-2 mt-auto mb-5 hover:bg-gray-200">
+            <a href="<?= WEBROOT ?>/?controller=securite&action=logout" class="flex items-center text-gray-600">
                 <i class="lni lni-exit mr-2"></i>
                 <span>Se Deconecter</span>
             </a>

@@ -6,7 +6,7 @@
         <h3 class="text-xl font-bold my-3">Les Articles</h3>
         <div class="flex justify-end mb-3">
             <a id="" class="bg-gray-700 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
-                href="<?= WEBROOT ?>/?action=nouvelle-article" role="button">Nouveau</a>
+                href="<?= WEBROOT ?>/?controller=article&action=nouvelle-article" role="button">Nouveau</a>
         </div>
         <div class="bg-white shadow-md rounded-md">
             <table class="w-full table-fixed border-collapse">
@@ -40,24 +40,23 @@
                             <td class="py-2 px-4">
                                 <center><?= $article["nomType"] ?></center>
                             </td>
-                            <form action="<?= WEBROOT ?>" method="post">
-                                <td class="py-2 px-4">
-                                    <form style="display:inline;">
-                                        <input type="text" class="hidden" name="action" value="modifier-article">
-                                        <button name="id" value="<?= $article["id_article"] ?>"
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                            <td class="py-2 px-4">
+                                <form action="<?= WEBROOT ?>" method="post" style="display:inline;">
+                                    <button name="id" value="<?= $article["id_article"] ?>"
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                                        <a
+                                            href="<?= WEBROOT ?>?controller=article&action=modifier-article&id=<?= $article["id_article"] ?>">
                                             <i class="fa-solid fa-pen-to-square"></i> Edit
-                                        </button>
-                                    </form>
-                                    <form style="display:inline;">
-                                        <input type="text" class="hidden" name="action" value="supprimer-article">
-                                        <button name="id" value="<?= $article["id_article"] ?>"
-                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
-                                            <i class="fa-solid fa-trash"></i> Delete
-                                        </button>
-                                    </form>
-                                </td>
-                            </form>
+                                        </a>
+                                    </button>
+                                    <input type="hidden" name="action" value="supprimer-article">
+                                    <input type="hidden" name="controller" value="article">
+                                    <button name="id" value="<?= $article["id_article"] ?>"
+                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+                                        <i class="fa-solid fa-trash"></i> Delete
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

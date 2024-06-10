@@ -31,6 +31,7 @@ class Session{
     // 2- Fermer la session
     public static function fermer() {
         // 1- Detruire les donnee de la session
+        unset($_SESSION["userConnect"]);
         session_destroy();
     }
 

@@ -40,12 +40,13 @@ class Model
     }
 
     // insert(save),update,delete
-    public function executeUpdate(string $sql):int
+    public function executeUpdate(string $sql):int|null
     {
         try {
             return $this->pdo->exec($sql);
         } catch (PDOException $e) {
             echo "Erreur de Connexion: " . $e->getMessage();
+            return null;
         }
     }
 

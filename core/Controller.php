@@ -12,11 +12,11 @@ class Controller
         header("location:" . WEBROOT . "?$path");
         exit;
     }
-    public function renderView(string $view, array $data)
+    public function renderView(string $view, array $data=[])
     {
         ob_start();
         extract($data);
-        require_once ("../views/$view.html.php");
+        require_once "../views/$view.html.php";
         $contentView = ob_get_clean();
         require_once "../views/layout/$this->layout.layout.php";
     }

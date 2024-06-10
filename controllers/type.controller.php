@@ -8,6 +8,9 @@ class TypeController extends Controller
     public function __construct()
     {
         parent::__construct();
+        if(!Autorisation::isConnect()){
+            parent::redirectToRoute("controller=securite&action=show-form");
+        }
         $this->typeModel = new TypeModel;
         $this->load();
     }

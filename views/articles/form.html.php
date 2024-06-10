@@ -2,7 +2,7 @@
     <div class="container mb-5">
         <div class="max-w-md mx-auto bg-white shadow-md rounded-md p-4">
             <div class="bg-gray-100 text-gray-800 font-bold p-2">Nouvelle Article</div>
-            <form action="<?=WEBROOT?>" method="post">
+            <form action="<?= WEBROOT ?>" method="post">
                 <div class="mb-4">
                     <label for="Libelle" class="block text-sm font-bold mb-2">Libelle</label>
                     <input name="libelle" type="text"

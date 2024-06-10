@@ -11,12 +11,19 @@ class Validator{
     }
     // Regle de Validation
         // obligatoire
-    public static function isEmpty (string $valueField,string $nameField,string $message="Champ est obligatoire"){
+    public static function isEmpty (string $valueField,string $nameField,string $message="Champ est obligatoire"):bool{
         if (empty($valueField)) {
             self::$errors[$nameField]=$message;
+            return true;
         }
+        return false;
     }
         // email
+        public static function isEmail (string $valueField,string $nameField,string $message="Champ est obligatoire"){
+            if (!filter_var($valueField, FILTER_VALIDATE_EMAIL)) {
+                self::$errors[$nameField]=$message;
+            }
+        }
         // tel
 }
 ?>

@@ -35,7 +35,7 @@ class ArticleController extends Controller
                 $types = $this->typeModel->findAll();
                 $categories = $this->categorieModel->findAll();
                 require_once "../views/articles/update.html.php";
-                $contentView = ob_get_clean();
+                $contentView = ob_get_clean();-
                 require_once "../views/layout/base.layout.php";
             } elseif ($_REQUEST["action"] == "valide-modification-article") {
                 $this->chargerFormulaire();
