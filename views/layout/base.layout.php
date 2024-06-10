@@ -27,9 +27,12 @@
                 <button class="text-gray-500 hover:text-gray-600 focus:outline-none">
                     | <i class="fa-solid fa-street-view"></i>
                 </button>
-                <div class="ml-2 font-bold">Admin</div>
+                <div class="ml-2 font-bold"><?=($_SESSION["userConnect"]["name"])?></div>
             </div>
         </div>
+        <?php
+        // var_dump($_SESSION["userConnect"]);
+        ?>
         <ul class="">
             <li class="py-2 px-4 hover:bg-gray-200">
                 <a href="<?= WEBROOT ?>/?controller=article&action=liste-article"
@@ -51,6 +54,17 @@
                     <span>Lister Categorie</span>
                 </a>
             </li>
+            <?php 
+                if ($_SESSION["userConnect"]["name"]=="RS"):
+            ?>
+            <li class="py-2 px-4 hover:bg-gray-200">
+                <a href="<?= WEBROOT ?>/?controller=Approvisionnement&action=liste-Approvisionnement"
+                    class="flex items-center text-gray-600">
+                    <i class="fa-solid fa-table mr-2"></i>
+                    <span>Lister Approvisionnement</span>
+                </a>
+            </li>
+            <?php endif; ?>
             <li class="py-2 px-4 hover:bg-gray-200 hidden">
                 <a href="#" class="flex items-center text-gray-600">
                     <i class="lni lni-layout mr-2"></i>
