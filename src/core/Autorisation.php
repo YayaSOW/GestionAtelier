@@ -1,5 +1,10 @@
 <?php 
-final class Autorisation
+namespace App\Core;
+
+use App\Core\Session;
+
+
+class Autorisation
 {
     //isConnect
     public static function isConnect():bool{

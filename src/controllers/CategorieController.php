@@ -1,6 +1,12 @@
 <?php
-require_once "../model/categorie.model.php";
-require_once "../core/Controller.php";
+namespace App\Controllers;
+
+use App\Core\Session;
+use App\Core\Validator;
+use App\Core\Controller;
+use App\Core\Autorisation;
+use App\Models\CategorieModel;
+
 class CategorieController extends Controller
 {
     private CategorieModel $categorieModel;

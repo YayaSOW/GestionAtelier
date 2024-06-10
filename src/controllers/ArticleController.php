@@ -1,8 +1,10 @@
 <?php
-require_once "../model/article.model.php";
-require_once "../model/type.model.php";
-require_once "../model/categorie.model.php";
-require_once "../core/Controller.php";
+namespace App\Controllers;
+
+use App\Core\Controller;
+use App\Models\TypeModel;
+use App\Models\ArticleModel;
+use App\Models\CategorieModel;
 
 class ArticleController extends Controller
 {
@@ -35,7 +37,7 @@ class ArticleController extends Controller
                 $types = $this->typeModel->findAll();
                 $categories = $this->categorieModel->findAll();
                 require_once "../views/articles/update.html.php";
-                $contentView = ob_get_clean();-
+                $contentView = ob_get_clean();
                 require_once "../views/layout/base.layout.php";
             } elseif ($_REQUEST["action"] == "valide-modification-article") {
                 $this->chargerFormulaire();

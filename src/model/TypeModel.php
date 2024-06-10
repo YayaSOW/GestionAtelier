@@ -1,5 +1,7 @@
 <?php
-require_once "../core/Model.php";
+namespace App\Models;
+
+use App\Core\Model;
 
 class TypeModel extends Model
 {

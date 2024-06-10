@@ -1,18 +1,19 @@
 {
-    "name": "user/ges-atelier-poo",
-    "description": "A project for managing an atelier using object-oriented PHP",
-    "type": "project",
+    "name": "user/ges-atelier_poo",
+    "description": "Projet Gestion Atelier en POO",
     "autoload": {
         "psr-4": {
-            "User\\GesAtelierPoo\\": "src/"
+            "App\\": "src/",
+            "App\\Controllers\\": "src/controllers/",
+            "App\\Models\\": "src/model/",
+            "App\\Core\\": "src/core/"
         }
     },
     "authors": [
         {
             "name": "Yaya SOW",
-            "email": "yaya.sow@ism.edu.sn"
+            "email": "yaya.sowzone@gmail.com.com"
         }
     ],
-    "minimum-stability": "stable",
     "require": {}
 }

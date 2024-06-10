@@ -1,6 +1,11 @@
 <?php
-require_once "../model/type.model.php";
-require_once "../core/Controller.php";
+namespace App\Controllers;
+
+use App\Core\Session;
+use App\Core\Validator;
+use App\Core\Controller;
+use App\Models\TypeModel;
+use App\Core\Autorisation;
 
 class TypeController extends Controller
 {

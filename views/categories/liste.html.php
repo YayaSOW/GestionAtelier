@@ -1,4 +1,5 @@
 <?php
+use App\Core\Session;
 $errors=[];
 if (Session::get("errors")) {
     $errors=Session::get("errors");

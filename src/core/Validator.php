@@ -1,4 +1,5 @@
 <?php
+namespace App\Core;
 class Validator{
     public static array $errors = [];
 

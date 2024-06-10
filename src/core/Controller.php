@@ -1,4 +1,8 @@
 <?php
+namespace App\Core;
+
+use App\Core\Session;
+
 class Controller
 {
     // protected string $layout="base";

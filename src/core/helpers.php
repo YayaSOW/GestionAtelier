@@ -1,5 +1,8 @@
 <?php
 
+use App\Core\Session;
+use App\Core\Autorisation;
+
 function add_class_invalid(string $fieldName, string $mauvais = "block", string $bien = "hidden"): void
 {
     echo isset(Session::get("errors")["$fieldName"]) ? "$mauvais" : "$bien";

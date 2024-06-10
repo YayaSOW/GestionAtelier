@@ -1,5 +1,8 @@
 <?php
-require_once "../core/Model.php";
+namespace App\Models;
+
+use App\Core\Model;
+
 class ArticleModel extends Model
 {
     public function __construct()

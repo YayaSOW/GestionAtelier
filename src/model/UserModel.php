@@ -1,5 +1,6 @@
 <?php
-require_once "../core/Model.php";
+namespace App\Models;
+use App\Core\Model;
 class UserModel extends Model
 {
     public function __construct()
