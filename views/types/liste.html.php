@@ -76,3 +76,4 @@ if (Session::get("errors")) {
     </div>
 </div>
 <?php Session::remove("errors");?>
+<script src="<?=WEBROOT?>/js/type.js"></script>

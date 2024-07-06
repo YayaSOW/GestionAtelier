@@ -22,7 +22,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    foreach ($articles as $article):
+                    foreach ($response["data"] as $article):
                         ?>
                         <tr>
                             <td class="py-2 px-4">
@@ -61,6 +61,33 @@
                     <?php endforeach ?>
                 </tbody>
             </table>
+            <br>
+            <nav aria-label="Page navigation" class="flex justify-center mb-4">
+                <ul class="inline-flex items-center -space-x-px">
+                    <li>
+                        <a href="<?= ($currentPage > 0) ? WEBROOT . "/?controller=article&action=liste-article&page=" . ($currentPage - 1) : '' ?>"
+                            class="px-3 py-2 ml-0 leading-tight <?= ($currentPage == 0) ? 'text-gray-500 bg-white border border-gray-300 rounded-l-lg' : 'text-gray-700 bg-gray-100 border border-gray-200 hover:bg-gray-200 hover:text-gray-700' ?>">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <?php for ($i = 0; $i < $response["pages"]; $i++): ?>
+                        <li>
+                            <a href="<?= WEBROOT ?>/?controller=article&action=liste-article&page=<?= $i ?>"
+                                class="px-3 py-2 leading-tight border border-gray-300 <?= ($i == $currentPage) ? 'bg-blue-500 text-white' : 'bg-white text-gray-500' ?> hover:bg-blue-600 hover:text-white">
+                                <?= $i + 1 ?>
+                            </a>
+                        </li>
+                    <?php endfor ?>
+                    <li>
+                        <a href="<?= ($currentPage < $response["pages"] - 1) ? WEBROOT . "/?controller=article&action=liste-article&page=" . ($currentPage + 1) : '' ?>"
+                            class="px-3 py-2 leading-tight <?= ($currentPage == $response["pages"] - 1) ? 'text-gray-500 bg-white border border-gray-300 rounded-r-lg' : 'text-gray-700 bg-gray-100 border border-gray-200 hover:bg-gray-200 hover:text-gray-700' ?>">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+
         </div>
     </main>
 </div>

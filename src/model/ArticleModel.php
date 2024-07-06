@@ -9,11 +9,19 @@ class ArticleModel extends Model
     {
         $this->ouvrirConnection();
         $this->table = "article";
+        $this->colonne = "id_article";
     }
 
-    public function findAll(): array
+    public function findAll(int $page=0, int $offset=OFFSET): array
     {
-        return $this->executeSelect("SELECT * FROM $this->table a, type t, categorie c WHERE a.typeId=t.id and a.categorieId=c.id");
+        $page*=$offset;
+        $result = $this->executeSelect("SELECT count(*) as nbreArticle FROM `article`",true);
+        $data = $this->executeSelect("SELECT a.*,t.nomType,c.nomCategorie FROM $this->table a, type t, categorie c WHERE a.typeId=t.id and a.categorieId=c.id Limit $page, $offset");
+        return [
+            "totalElements" => $result["nbreArticle"],
+            "data" => $data,
+            "pages" => ceil($result["nbreArticle"] / $offset)
+        ];
     }
 
     public function save(array $article): int

@@ -8,6 +8,7 @@ class Model
     protected $username = "root";
     protected $password = "";
     protected string $table;
+    protected string $colonne="id";
     public function ouvrirConnection():void
     {
         //Connecter a la BD
@@ -55,6 +56,11 @@ class Model
     public function findAll(): array
     {
         return $this->executeSelect("SELECT * FROM $this->table");
+    }
+
+    public function getById(int $id): array
+    {
+        return $this->executeSelect("SELECT * FROM $this->table where $this->colonne=$id",true);
     }
 
     public function findByName(string $nameColonne,string $value): array|false

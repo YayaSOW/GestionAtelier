@@ -35,7 +35,7 @@
         ?>
         <ul class="">
             <li class="py-2 px-4 hover:bg-gray-200">
-                <a href="<?= WEBROOT ?>/?controller=article&action=liste-article"
+                <a href="<?= WEBROOT ?>/?controller=article&action=liste-article&page=0"
                     class="flex items-center text-gray-600 ">
                     <i class="fa-solid fa-list mr-2"></i>
                     <span>Lister Article</span>
@@ -54,17 +54,18 @@
                     <span>Lister Categorie</span>
                 </a>
             </li>
-            <?php 
-                if ($_SESSION["userConnect"]["name"]=="RS"):
-            ?>
+            
+                <!-- if ($_SESSION["userConnect"]["name"]=="RS"): -->
+    
             <li class="py-2 px-4 hover:bg-gray-200">
-                <a href="<?= WEBROOT ?>/?controller=Approvisionnement&action=liste-Approvisionnement"
+                <a href="<?= WEBROOT ?>/?controller=appro&action=liste-appro"
                     class="flex items-center text-gray-600">
-                    <i class="fa-solid fa-table mr-2"></i>
+                    <!-- <i class="fa-solid fa-table mr-2"></i> -->
+                    <i class="fa-solid fa-truck-loading mr-2"></i>
                     <span>Lister Approvisionnement</span>
                 </a>
             </li>
-            <?php endif; ?>
+             <!-- endif; -->
             <li class="py-2 px-4 hover:bg-gray-200 hidden">
                 <a href="#" class="flex items-center text-gray-600">
                     <i class="lni lni-layout mr-2"></i>

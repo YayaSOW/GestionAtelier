@@ -24,5 +24,9 @@ class Controller
         $contentView = ob_get_clean();
         require_once "../views/layout/$this->layout.layout.php";
     }
+    public function renderJson(array $data=[])
+    {
+        echo json_encode($data);
+    }
 }
 ?>

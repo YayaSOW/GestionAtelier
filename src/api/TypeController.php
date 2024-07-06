@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers;
+namespace App\Api;
 
 use App\Core\Session;
 use App\Core\Validator;
@@ -23,11 +23,11 @@ class TypeController extends Controller
     {
         // $this->layout="base1";
         if (isset($_REQUEST["action"])) {
-            if ($_REQUEST["action"] == "liste-type") {
+            if ($_REQUEST["action"] == "api-liste-type") {
                 $this->listerType();
-            } elseif ($_REQUEST["action"] == "save-type") {
-                // unset($_REQUEST["action"]);
-                // unset($_REQUEST["controller"]);
+            } elseif ($_REQUEST["action"] == "api-save-type") {
+                unset($_REQUEST["action"]);
+                unset($_REQUEST["controller"]);
                 $this->store($_REQUEST);
             } elseif ($_REQUEST["action"] == "supprimer-type") {
                 // var_dump($_REQUEST);
@@ -41,8 +41,7 @@ class TypeController extends Controller
     private function listerType(): void
     {
         $datas = $this->typeModel->findAll();
-        parent::renderView("types/liste", ["types" =>$datas]);
-        // parent::renderView("types/liste", ["types" => $this->typeModel->findAll()]);
+        parent::renderJson($datas);
     }
     private function store(array $types): void
     {

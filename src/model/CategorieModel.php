@@ -2,7 +2,6 @@
 namespace App\Models;
 
 use App\Core\Model;
-// require_once "../core/Model.php";
 class CategorieModel extends Model
 {
     public function __construct()

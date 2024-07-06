@@ -24,7 +24,7 @@ class ArticleController extends Controller
         ob_start();
         if (isset($_REQUEST["action"])) {
             if ($_REQUEST["action"] == "liste-article") {
-                $this->listerArticle();
+                $this->listerArticle($_REQUEST["page"]);
             } elseif ($_REQUEST["action"] == "nouvelle-article") {
                 $this->chargerFormulaire();
             } elseif ($_REQUEST["action"] == "save-article") {
@@ -53,9 +53,12 @@ class ArticleController extends Controller
         ob_end_flush();
     }
 
-    private function listerArticle(): void
+    private function listerArticle(int $page=0): void
     {
-        parent::renderView("articles/liste", ["articles" => $this->articleModel->findAll()]);
+        parent::renderView("articles/liste", [
+            "response" => $this->articleModel->findAll($page, OFFSET),
+            "currentPage" => $page
+        ]);
     }
 
     private function chargerFormulaire(): void
@@ -70,18 +73,18 @@ class ArticleController extends Controller
     private function store(array $articles): void
     {
         $this->articleModel->save($articles);
-        parent::redirectToRoute("controller=article&action=liste-article");
+        parent::redirectToRoute("controller=article&action=liste-article&page=0");
     }
     private function change(int $id, array $articles)
     {
         $this->articleModel->update($id, $articles);
-        parent::redirectToRoute("controller=article&action=liste-article");
+        parent::redirectToRoute("controller=article&action=liste-article&page=0");
     }
 
     private function supprimer(int $id)
     {
         $this->articleModel->delete($id);
-        parent::redirectToRoute("controller=article&action=liste-article");
+        parent::redirectToRoute("controller=article&action=liste-article&page=0");
     }
 }
 ?>
